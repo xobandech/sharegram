@@ -1,0 +1,29 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id      Int      @id @default(autoincrement())
+  username String  @unique
+  posts    Post[]
+}
+
+model Post {
+  id        Int       @id @default(autoincrement())
+  imageUrl  String    @default("")
+  author    User      @relation(fields: [authorId], references: [id])
+  authorId  Int
+  textToShare String 
+  comments  String    @default("")
+  likes     Int       @default(0)
+  createdAt DateTime  @default(now())
+}
+// Todo: Make migration!!! npx prisma migrate dev --name initial --preview-feature
