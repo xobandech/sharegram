@@ -1,5 +1,5 @@
 import Link from "next/link";
-import AddPostButton from "../components-with-logic/AddPostButton";
+import AddPostButton from "../components-with-logic/AddPostButton/AddPostButton";
 const NavigationBar = () => {
   return (
     <div className="flex justify-between">
