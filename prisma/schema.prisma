@@ -10,20 +10,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id      Int      @id @default(autoincrement())
-  username String  @unique
-  posts    Post[]
-}
+  model User {
+    id      Int      @id @default(autoincrement())
+    username String  @unique
+    password String
+    posts    Post[] 
+  }
 
 model Post {
-  id        Int       @id @default(autoincrement())
-  imageUrl  String    @default("")
-  author    User      @relation(fields: [authorId], references: [id])
-  authorId  Int
-  textToShare String 
-  comments  String    @default("")
-  likes     Int       @default(0)
-  createdAt DateTime  @default(now())
+  id          Int       @id @default(autoincrement())
+  imageUrl    String    @default("")
+  author      User      @relation(fields: [authorId], references: [id])
+  authorId    Int       @default(0) // Add the @default directive here
+  textToShare String
+  comments    String    @default("")
+  likes       Int       @default(0)
+  createdAt   DateTime  @default(now())
 }
+
 // Todo: Make migration!!! npx prisma migrate dev --name initial --preview-feature
