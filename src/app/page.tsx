@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react";
-import { getPosts } from "./ServerFunctions";
+import { getPosts } from "../ServerFunctions";
 
 export type Post = {
   textToShare: string;

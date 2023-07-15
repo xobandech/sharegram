@@ -1,5 +1,5 @@
 import { useContext } from "react"
 
 const UserContextProvider = () => {
-    const [user, setUser] = useContext()
+    // const [user, setUser] = useContext()
 }
