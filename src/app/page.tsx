@@ -1,15 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
 import { getPosts } from "../ServerFunctions";
-
-export type Post = {
-  textToShare: string;
-  imageUrl: string;
-  id: number;
-  likes: number;
-  createdAt: Date;
-  comments: String;
-}
+import { Post } from "@prisma/client";
 
 export default function Home() {
   const [posts, setPosts] = useState<Post[]>([])
@@ -26,7 +18,13 @@ export default function Home() {
     <div>
       {posts &&
         posts.map((post) => {
-          return <h3 key={post.id}>{post.textToShare}</h3>;
+          if (!post.imageUrl) return <h3 key={post.id}>{post.textToShare}</h3>;
+          return <div key={post.id} className="w-[200px]">
+              <img src={post.imageUrl} alt={post.imageUrl} />
+              <h3>
+            {post.textToShare}
+              </h3>
+          </div>
         })}
     </div>
   );
