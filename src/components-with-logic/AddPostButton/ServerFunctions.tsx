@@ -1,9 +1,11 @@
 "use server";
 import { prisma } from "../../db";
+
 type PostData = {
   imageUrl: string;
   textToShare: string;
 }
+
 export const handleAddPost = async ({imageUrl, textToShare}: PostData) => {
   try {
     const user = {
@@ -14,9 +16,9 @@ export const handleAddPost = async ({imageUrl, textToShare}: PostData) => {
 
     await prisma.post.create({
       data: {
-        // author: {
-        //   connect: { id: user.id },
-        // },
+        author: {
+          connect: { id: user.id },
+        },
         imageUrl: imageUrl,
         textToShare: textToShare,
       },
