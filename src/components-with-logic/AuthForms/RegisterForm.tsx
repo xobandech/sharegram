@@ -1,6 +1,7 @@
 "use client"
 import { redirect } from "next/navigation";
 import { createUser } from "./LoginServerFunctions";
+
 const handleRegistration = async (data: FormData) => {
   const password = data.get("password")?.valueOf().toString() as string;
   const confirmPassword = data.get("confirmPassword")?.valueOf() as string;
@@ -11,6 +12,7 @@ const handleRegistration = async (data: FormData) => {
     redirect("/");
   }
 };
+
 const RegisterForm = () => {
   return (
     <form className="flex" action={handleRegistration}>
