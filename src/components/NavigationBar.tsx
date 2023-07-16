@@ -7,9 +7,8 @@ const NavigationBar = () => {
         <Link href="/">Sharegram</Link>
       </div>
       <div className="flex justify-around w-[15rem]">
-      <Link href="/auth">Sign In</Link>
-      <Link href="/auth">Log In</Link>
-
+        <Link href="/auth">Sign In</Link>
+        <Link href="/auth">Log In</Link>  
         <AddPostButton />
       </div>
     </div>
