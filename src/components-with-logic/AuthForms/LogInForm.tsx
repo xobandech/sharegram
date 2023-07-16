@@ -1,7 +1,26 @@
-import { handleLogin } from "./LoginServerFunctions";
+"use client"  
+import { redirect } from "next/navigation";
+import { findUserByUsername } from "./LoginServerFunctions";
+const handleLogin = async (data: FormData) => {
+  const password = data.get("password")?.valueOf() as string;
+  const username = data.get("username")?.valueOf() as string;
+  try {
+    findUserByUsername(username)
+      .then((user) => {
+        if (password === user?.password) {
+          console.log("Succesfull login");
+          redirect('/')
+        }
+      });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 const LogInForm = () => {
+
   return (
-    <form action={handleLogin} className="">
+    <form action={handleLogin} className="outline outline-1 outline-black">
       <header>Login</header>
       <label htmlFor="username">Username</label>
       <input className="text-black" type="text" name="username" />
