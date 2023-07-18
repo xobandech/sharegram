@@ -5,13 +5,12 @@ export type User = {
     id: number;
     username: string;
     posts?: Post[]
-}
+} | null
 
 export type Post = {
     id: number;
     imageUrl: string;
     textToShare: string;
-    author: User;
     createdAt: Date;
     likes: number;
     comments: string;
@@ -28,7 +27,7 @@ export const UserContext = createContext<UserContextType>({
 });
   
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
-  const [currentUser, setCurrentUser] = useState<any>(null);
+  const [currentUser, setCurrentUser] = useState<User>(null);
   const value: UserContextType = { currentUser, setCurrentUser };
   return (
     <UserContext.Provider value={value}>
