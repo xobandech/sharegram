@@ -1,4 +1,5 @@
 "use server";
+import { User } from "@/contexts/UserContextProvider";
 import {  PrismaClient } from "@prisma/client";
 
 type UserData = {
@@ -10,7 +11,7 @@ export async function findUserByUsername(username: string) {
   "use server"
   const prisma = new PrismaClient()
   return await prisma.user
-      .findUnique({ where: { username: username } })
+      .findUnique({ where: { username: username } }) as User & UserData
 }
 
 export async function createUser(data: UserData) {
