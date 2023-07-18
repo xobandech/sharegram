@@ -1,7 +1,7 @@
 "use client"
 import { redirect } from "next/navigation";
 import { createUser, findUserByUsername } from "./LoginServerFunctions";
-import { User, UserContext } from "@/contexts/UserContextProvider";
+import { UserContext } from "@/contexts/UserContextProvider";
 import { useContext } from "react";
 
 
