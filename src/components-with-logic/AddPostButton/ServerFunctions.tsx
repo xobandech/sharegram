@@ -1,31 +1,45 @@
-"use server";
+"use server"
+
+import { User } from "@/contexts/UserContextProvider";
 import { prisma } from "../../db";
 
 type PostData = {
-  imageUrl: string;
-  textToShare: string;
-}
+  postImageUrl: string;
+  postText: string;
+  user: User;
+};
 
-export const handleAddPost = async ({imageUrl, textToShare}: PostData) => {
+export async function createPost(
+  postImageUrl: string,
+  postText: string,
+  user: User
+) {
+
   try {
-    const user = {
-      username: "Anonymous",
-      id: 999999,
-      posts: [],
-    };
-
-    await prisma.post.create({
-      data: {
-        author: {
-          connect: { id: user.id },
+    if (user) {
+      await prisma.userPost.create({
+        data: {
+          postImageUrl,
+          postText,
+          user: {
+            connect: { id: user.id },
+          },
         },
-        imageUrl: imageUrl,
-        textToShare: textToShare,
-      },
-    });
+        include: {
+          user: true, 
+        },
+      });
+      await prisma.posts.create({
+        data: {
+          postImageUrl,
+          postText,
+          userId: user.id
+        }
+      });
+    }
 
     console.log("Post created successfully");
   } catch (error) {
     console.error("Error creating post:", error);
   }
-};
+}
