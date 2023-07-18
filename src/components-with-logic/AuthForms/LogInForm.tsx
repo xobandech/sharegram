@@ -1,28 +1,30 @@
-"use client";
+"use client"  
 import { redirect } from "next/navigation";
 import { findUserByUsername } from "./LoginServerFunctions";
 import { useContext } from "react";
 import { UserContext } from "@/contexts/UserContextProvider";
+
 
 const LogInForm = () => {
   const { setCurrentUser } = useContext(UserContext);
   const handleLogin = async (data: FormData) => {
     const password = data.get("password")?.valueOf() as string;
     const username = data.get("username")?.valueOf() as string;
-
+  
     try {
-      findUserByUsername(username).then((user) => {
-        if (user && password === user.password) {
-          setCurrentUser(user);
-          console.log(user);
-          redirect("/");
-        }
-      });
+      findUserByUsername(username)
+        .then((user) => {
+          if (user && password === user.password) {
+            setCurrentUser(user);
+            console.log(user);
+            redirect('/');
+          }
+        });
     } catch (e) {
       console.log(e);
     }
   };
-
+  
   return (
     <form action={handleLogin} className="outline outline-1 outline-black">
       <header>Login</header>
