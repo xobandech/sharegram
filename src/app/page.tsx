@@ -1,14 +1,17 @@
-"use client"
+"use client";
 import { useEffect, useState } from "react";
 import { getPosts } from "../ServerFunctions";
-import { Post } from "@prisma/client";
+import { UserPost } from "@prisma/client";
 
 export default function Home() {
-  const [posts, setPosts] = useState<Post[]>([])
+  const [posts, setPosts] = useState<UserPost[]>([]);
   useEffect(() => {
     const fetchPosts = async () => {
-      const posts = await getPosts() as Post[]
-      setPosts(posts)
+      await getPosts().then((posts) => {
+        console.log(posts);
+        
+        setPosts(posts as UserPost[]);
+      });
     };
 
     fetchPosts();
@@ -18,15 +21,14 @@ export default function Home() {
     <div>
       {posts &&
         posts.map((post) => {
-          if (!post.imageUrl) return <h3 key={post.id}>{post.textToShare}</h3>;
-          return <div key={post.id} className="w-[200px]">
-              <img src={post.imageUrl} alt={post.imageUrl} />
-              <h3>
-            {post.textToShare}
-              </h3>
-          </div>
+          if (!post.postImageUrl) return <h3 key={post.id}>{post.postText}</h3>;
+          return (
+            <div key={post.id} className="w-[200px]">
+              <img src={post.postImageUrl} alt={post.postImageUrl} />
+              <h3>{post.postText}</h3>
+            </div>
+          );
         })}
     </div>
   );
-  
 }
