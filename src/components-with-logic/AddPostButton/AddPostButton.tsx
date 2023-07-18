@@ -1,21 +1,23 @@
 "use client";
-import { FormEvent, useState } from "react";
-import { handleAddPost } from "./ServerFunctions";
+import { FormEvent, useContext, useState } from "react";
+import { createPost } from "./ServerFunctions";
+import { UserContext } from "@/contexts/UserContextProvider";
 
 const AddPostButton = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [formData, setFormData] = useState({
-    imageUrl: "",
-    textToShare: "",
+    postText: "",
+    postImageUrl: "",
   });
+  const { currentUser } = useContext(UserContext)
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    handleAddPost(formData);
+    createPost(formData.postImageUrl, formData.postText, currentUser);
     setIsPopupOpen(false);
     setFormData({
-      imageUrl: "",
-      textToShare: "",
+      postText: "",
+      postImageUrl: "",
     });
   };
 
@@ -26,11 +28,11 @@ const AddPostButton = () => {
   const closePopup = () => {
     setIsPopupOpen(false);
   };
-
+  if(!currentUser) return <p>Login to Add post</p>
   return (
     <>
       <button onClick={openPopup}>Add Post</button>
-      {isPopupOpen && (
+      { isPopupOpen && (
         <div className="popup">
           <form onSubmit={handleSubmit}>
             <label htmlFor="imageUrl">
@@ -39,11 +41,11 @@ const AddPostButton = () => {
             <input
               type="text"
               name="imageUrl"
-              value={formData.imageUrl}
+              value={formData.postImageUrl}
               onChange={(e) => {
                 setFormData({
                   ...formData,
-                  imageUrl: e.target.value,
+                  postImageUrl: e.target.value,
                 });
                 console.log(formData);
                 
@@ -56,11 +58,11 @@ const AddPostButton = () => {
               required
               type="text"
               name="textToShare"
-              value={formData.textToShare}
+              value={formData.postText}
               onChange={(e) => {
                 setFormData({
                   ...formData,
-                  textToShare: e.target.value,
+                  postText: e.target.value,
                 });
                 console.log(formData);
                 
