@@ -20,19 +20,11 @@ model User {
 model UserPost {
   id            Int       @id @default(autoincrement())
   user          User      @relation(fields: [userId], references: [id])
+  authorUsername String
   userId        Int
   postText      String
   postImageUrl  String
-  createdAt     DateTime  @default(now())
+  createdAt     DateTime    @default(now())
 }
-
-model Posts {
-  id        Int         @id @default(autoincrement())
-  postText      String
-  postImageUrl  String
-  userId Int
-  createdAt     DateTime  @default(now())
-}
-
 
 // Todo: Make migration!!! npx prisma migrate dev --name initial --preview-feature
