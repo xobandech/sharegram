@@ -1,13 +1,41 @@
 "use server"
-
 import { User } from "@/contexts/UserContextProvider";
 import { prisma } from "../../db";
+import { PrismaClient } from "@prisma/client";
+
+export type UserData = {
+  password: string;
+  username: string;
+};
 
 type PostData = {
   postImageUrl: string;
   postText: string;
   user: User;
 };
+export async function findUserById(id:number) {
+  const prisma = new PrismaClient();
+  try {
+    const user = await prisma.user.findUnique({
+      where: {
+        id: id,
+      },
+    });
+
+    return user;
+  } catch (error) {
+    console.error('Error finding user by ID:', error);
+    throw error;
+  }
+}
+
+export async function findUserByUsername(username: string) {
+  "use server";
+  const prisma = new PrismaClient();
+  return (await prisma.user.findUnique({
+    where: { username: username },
+  })) as User & UserData;
+}
 
 export async function createPost(
   postImageUrl: string,
@@ -24,17 +52,11 @@ export async function createPost(
           user: {
             connect: { id: user.id },
           },
+          authorUsername: user.username
         },
         include: {
           user: true, 
         },
-      });
-      await prisma.posts.create({
-        data: {
-          postImageUrl,
-          postText,
-          userId: user.id
-        }
       });
     }
 
