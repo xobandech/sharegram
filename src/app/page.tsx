@@ -25,7 +25,7 @@ export default function Home() {
           return (
             <div
               key={post.id}
-              className="flex w-[468px] flex-col"
+              className="flex w-[468px] max-sm:w-[100%] flex-col"
             >
               <div className="flex flex-row w-[100%] items-left m-2">
                 <Image
@@ -38,12 +38,12 @@ export default function Home() {
                 <p className="p-2">{post.authorUsername}</p>
               </div>
               <div
-                className="max-w-[468px] bg-gray-50 overflow-hidden"
+                className="max-w-[468px] max-sm:max-w-[100%] bg-gray-50 overflow-hidden"
               >
                 <img
                   src={post.postImageUrl}
                   alt={post.postImageUrl}
-                  className="object-contain w-full h-full max-w-[468px] max-h-[585px]"
+                  className="object-contain w-full h-full max-sm:w-[100%] max max-w-[468px] max-h-[585px]"
                 />
               </div>
               <h3 className="text-xl">{post.postText}</h3>
