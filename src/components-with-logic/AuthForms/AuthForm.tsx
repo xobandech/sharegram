@@ -3,7 +3,7 @@ import RegisterForm from "./RegisterForm";
 
 const AuthForm = () => {
   return (
-    <div className="flex flex-col">
+    <div className="max-sm:mb-10">
       <LogInForm />
       <RegisterForm />
     </div>
