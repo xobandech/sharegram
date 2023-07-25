@@ -24,7 +24,7 @@ const LogInForm = () => {
   };
 
   return (
-    <form action={handleLogin} className="flex flex-col ">
+    <form action={handleLogin} className="flex flex-col sm:mr-4 ">
       <header className="flex flex-row justify-center">Log In</header>
       <div className="mb-4">
         <label
@@ -52,26 +52,28 @@ const LogInForm = () => {
           name="password"
         />
       </div>
-      <button
-        type="submit"
-        style={{
-          backgroundColor: "#1D4ED8",
-          color: "white",
-          borderColor: "#1D4ED8",
-          borderWidth: "2px",
-          fontSize: "14px",
-          borderRadius: "0.5rem",
-          marginTop: "10px",
-          fontWeight: "500",
-          padding: "10px 20px",
-          width: "100%",
-          maxWidth: "150px", // Set a maximum width for larger screens (sm:w-auto)
-          textAlign: "center",
-          marginBottom: "2.5rem",
-        }}
-      >
-        Log In
-      </button>
+      <div className="flex justify-center">
+        <button
+          type="submit"
+          style={{
+            backgroundColor: "#1D4ED8",
+            color: "white",
+            borderColor: "#1D4ED8",
+            borderWidth: "2px",
+            fontSize: "14px",
+            borderRadius: "0.5rem",
+            marginTop: "10px",
+            fontWeight: "500",
+            padding: "10px 20px",
+            width: "100%",
+            maxWidth: "150px", // Set a maximum width for larger screens (sm:w-auto)
+            textAlign: "center",
+            marginBottom: "2.5rem",
+          }}
+        >
+          Log In
+        </button>
+      </div>
     </form>
   );
 };
