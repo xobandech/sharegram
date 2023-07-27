@@ -52,7 +52,7 @@ const LogInForm = () => {
           name="password"
         />
       </div>
-      <div>
+      <div className="flex justify-center">
 
       <button
         type="submit"
