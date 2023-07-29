@@ -8,7 +8,7 @@ import { useContext } from "react";
 const NavigationBar = () => {
   const { currentUser } = useContext(UserContext);
   return (
-    <nav className="sticky z-20 top-0 justify-between [&>.link]:max-xl:hidden w-[100%] p-0 [&>*]:my-auto h-[2.8rem] flex flex-row bg-white border-b">
+    <nav className="sticky z-20 top-0 justify-between [&>.link]:max-xl:hidden w-[100%] p-0 [&>*]:my-auto h-[3.2rem] flex flex-row bg-white border-b">
       <div>
         <Link className="flex pl-4 flex-row justify-center" href="/">
           <Image src={Logo} width={150} height={200} alt="dasds" />
