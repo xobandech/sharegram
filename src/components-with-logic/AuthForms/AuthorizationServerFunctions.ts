@@ -1,18 +1,16 @@
 "use server";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, User } from "@prisma/client";
 import { UserData } from "../AddPostButton/ServerFunctions";
 
 export async function createUser(data: UserData) {
   const prisma = new PrismaClient();
-  await prisma.user.create({
+  const user = await prisma.user.create({
     data: {
       username: data.username,
       password: data.password,
-      posts: {
-        connect: [],
-      },
     },
   });
+  return user as User
 }
 
 export async function getUsers() {
