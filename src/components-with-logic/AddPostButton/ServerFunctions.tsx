@@ -1,7 +1,7 @@
 "use server"
 import { User } from "@/contexts/UserContextProvider";
-import { prisma } from "../../db";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, UserPost } from "@prisma/client";
+const prisma = new PrismaClient()
 
 export type UserData = {
   password: string;
@@ -13,8 +13,8 @@ type PostData = {
   postText: string;
   user: User;
 };
+
 export async function findUserById(id:number) {
-  const prisma = new PrismaClient();
   try {
     const user = await prisma.user.findUnique({
       where: {
@@ -29,9 +29,22 @@ export async function findUserById(id:number) {
   }
 }
 
+export async function getPostsByUserId(userId: number): Promise<UserPost[]> {
+  try {
+    const posts = await prisma.userPost.findMany({
+      where: {
+        userId: userId,
+      },
+    });
+    return posts;
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    return [];
+  }
+}
+
 export async function findUserByUsername(username: string) {
   "use server";
-  const prisma = new PrismaClient();
   return (await prisma.user.findUnique({
     where: { username: username },
   })) as User & UserData;
@@ -45,7 +58,7 @@ export async function createPost(
 
   try {
     if (user) {
-      await prisma.userPost.create({
+       await prisma.userPost.create({
         data: {
           postImageUrl,
           postText,
