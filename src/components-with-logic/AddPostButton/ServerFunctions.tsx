@@ -31,12 +31,11 @@ export async function findUserById(id:number) {
 
 export async function getPostsByUserId(userId: number): Promise<UserPost[]> {
   try {
-    const posts = await prisma.userPost.findMany({
+    return await prisma.userPost.findMany({
       where: {
         userId: userId,
       },
     });
-    return posts;
   } catch (error) {
     console.error('Error fetching posts:', error);
     return [];
