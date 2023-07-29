@@ -1,11 +1,18 @@
 "use client"
+import { findUserById } from "@/components-with-logic/AddPostButton/ServerFunctions"
+import { User } from "@/contexts/UserContextProvider"
 import { useParams } from "next/navigation"
+import { useState } from "react"
 
 const UserProfilePage = () => {
-    const useparams = useParams()
-    console.log(useparams);
+    const [user, setUser] = useState<User>()
+    const userId = +useParams().userId
+    findUserById(userId).then((user) => setUser(user))
+    console.log(user);
     
-    return <h1>UserPage</h1>
+    return <>
+
+    </>
 }
 
 export default UserProfilePage
