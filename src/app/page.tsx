@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { getPosts } from "../ServerFunctions";
 import { UserPost } from "@prisma/client";
+import Link from "next/link";
 import Image from "next/image";
 export default function Home() {
   const [posts, setPosts] = useState<UserPost[]>([]);
@@ -22,19 +23,25 @@ export default function Home() {
         posts.map((post) => {
           if (!post.postImageUrl)
             return (
-                <div key={post.id} className="flex w-[468px] max-sm:w-[100%] flex-col border-b">
-                  <div className="flex flex-row w-[100%] items-left m-2">
-                    <Image
-                      className="rounded-2xl"
-                      src={`https://robohash.org/${post.userId}?size=40x40&set=set2`}
-                      alt={`${post.authorUsername}'s avatar`}
-                      width={40}
-                      height={40}
-                    />
-                    <p className="p-2">{post.authorUsername}</p>
-                  </div>
-                  <h3>{post.postText}</h3>
-                </div>
+              <div
+                key={post.id}
+                className="flex w-[468px] max-sm:w-[100%] flex-col border-b"
+              >
+                <Link
+                  className="flex flex-row w-[100%] items-left m-2"
+                  href={`/${post.userId}`}
+                >
+                  <Image
+                    className="rounded-2xl"
+                    src={`https://robohash.org/${post.userId}?size=40x40&set=set2`}
+                    alt={`${post.authorUsername}'s avatar`}
+                    width={40}
+                    height={40}
+                  />
+                  <p className="p-2">{post.authorUsername}</p>
+                </Link>
+                <h3>{post.postText}</h3>
+              </div>
             );
 
           return (
@@ -42,7 +49,10 @@ export default function Home() {
               key={post.id}
               className="flex w-[468px] max-sm:w-[100%] flex-col border-b"
             >
-              <div className="flex flex-row w-[100%] items-left m-2">
+              <Link
+                className="flex flex-row w-[100%] items-left m-2"
+                href={`/${post.userId}`}
+              >
                 <Image
                   className="rounded-2xl"
                   src={`https://robohash.org/${post.userId}?size=40x40&set=set2`}
@@ -51,7 +61,7 @@ export default function Home() {
                   height={40}
                 />
                 <p className="p-2">{post.authorUsername}</p>
-              </div>
+              </Link>
               <div className="max-w-[468px] max-sm:max-w-[100%] bg-gray-50 overflow-hidden">
                 <img
                   src={post.postImageUrl}
