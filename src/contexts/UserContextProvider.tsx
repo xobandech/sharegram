@@ -4,7 +4,6 @@ import React, { createContext, useState } from "react";
 export type User = {
     id: number;
     username: string;
-    posts?: Post[]
 } | null
 
 export type Post = {
