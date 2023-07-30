@@ -36,7 +36,7 @@ const UserProfilePage = () => {
           </>
         )}
       </div>
-      <div className="w-1/2 min-w-[340px] flex-col-reverse flex">
+      <div className="w-[62%] min-w-[340px] flex-col-reverse flex">
         {userPosts.length > 0 ? (
           userPosts.map((post) => (
             <div key={post.id}>
