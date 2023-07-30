@@ -3,15 +3,17 @@ import {
   findUserById,
   getPostsByUserId,
 } from "@/components-with-logic/AddPostButton/ServerFunctions";
-import { User } from "@/contexts/UserContextProvider";
+import { User, UserContext } from "@/contexts/UserContextProvider";
 import Image from "next/image";
 import { UserPost } from "@prisma/client";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import LogoutButton from "@/components-with-logic/LogoutButton/LogoutButton";
 
 const UserProfilePage = () => {
   const [user, setUser] = useState<User>();
   const [userPosts, setUserPosts] = useState<UserPost[]>([]);
+  const { currentUser } = useContext(UserContext)
   const userId = +useParams().userId;
 
   useEffect(() => {
@@ -19,10 +21,11 @@ const UserProfilePage = () => {
 
     getPostsByUserId(userId).then((posts) => setUserPosts(posts));
   }, [userId]);
-
   return (
     <div className="flex flex-col items-center">
-      <div className="w-[70%] flex items-center mt-2 mb-4">
+      <div className="w-[70%] flex items-center mt-2 mb-4 justify-between">
+        <div className="flex items-center">
+
         {user && (
           <>
           <Image
@@ -31,9 +34,15 @@ const UserProfilePage = () => {
                     alt={`${user.username}'s avatar`}
                     width={65}
                     height={65}
-                  />
+                    />
             <h2>{user.username}</h2>
           </>
+        )}
+            </div>
+        { user?.id === currentUser?.id && (
+          <div className="flex justify-end ">
+            <LogoutButton />
+          </div>
         )}
       </div>
       <div className="w-[62%] min-w-[340px] flex-col-reverse flex">
