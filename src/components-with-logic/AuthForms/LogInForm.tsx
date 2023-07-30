@@ -12,8 +12,8 @@ const LogInForm = () => {
     try {
       findUserByUsername(username).then((user) => {
         if (user && password === user.password) {
+          localStorage.setItem("currentUserSharegramSh", JSON.stringify(user))
           setCurrentUser(user);
-          console.log(user);
           window.location.replace("/");
         }
       });
