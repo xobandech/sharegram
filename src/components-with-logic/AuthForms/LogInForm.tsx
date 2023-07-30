@@ -15,7 +15,7 @@ const LogInForm = () => {
         if (user && password === user.password) {
           setCurrentUser(user);
           console.log(user);
-          redirect("/");
+          window.location.replace("/");
         }
       });
     } catch (e) {
