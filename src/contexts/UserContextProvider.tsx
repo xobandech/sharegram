@@ -1,5 +1,5 @@
 "use client"
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 export type User = {
     id: number;
@@ -28,6 +28,16 @@ export const UserContext = createContext<UserContextType>({
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentUser, setCurrentUser] = useState<User>(null);
   const value: UserContextType = { currentUser, setCurrentUser };
+
+  useEffect(() => {
+    const userString = localStorage.getItem('currentUserSharegramSh');
+    if (userString) {
+      const user = JSON.parse(userString) as User;
+      setCurrentUser(user);
+    }
+  }, []);
+  
+  
   return (
     <UserContext.Provider value={value}>
       {children}
