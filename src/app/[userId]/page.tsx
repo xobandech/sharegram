@@ -22,7 +22,7 @@ const UserProfilePage = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="w-[70%] flex items-center mt-2">
+      <div className="w-[70%] flex items-center mt-2 mb-4">
         {user && (
           <>
           <Image
