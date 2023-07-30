@@ -21,7 +21,7 @@ const UserPostComponent = (post: UserPost) => {
           />
           <p className="p-2">{post.authorUsername}</p>
         </Link>
-        <h3>{post.postText}</h3>
+        <h3 className="max-sm:px-4">{post.postText}</h3>
       </div>
     );
 
