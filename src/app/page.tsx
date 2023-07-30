@@ -19,7 +19,7 @@ export default function Home() {
     <div className="flex flex-col-reverse items-center">
       {posts &&
         posts.map((post) => {
-          return <UserPostComponent {...post} />
+          return <UserPostComponent key={post.id} {...post} />
         })}
     </div>
   );
