@@ -42,7 +42,7 @@ const UserProfilePage = () => {
             <div key={post.id}>
               <p></p>
               <p className="border-b">{post.postText}</p>
-              <div className="flex justify-end">
+              <div className="flex justify-end text-gray-500">
                 <h3>{`${post.createdAt.toString().slice(3, 21)}`}</h3>
               </div>
             </div>
