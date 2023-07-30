@@ -19,14 +19,13 @@ const NavigationBar = () => {
           <div className="flex flex-row justify-between items-center">
             <AddPostButton />
             <div className="flex items-center pl-4">
-              <p className="mr-2">{currentUser.username}</p>
               <Link href={`/${currentUser.id}`}>
                 <Image
                   className="rounded-2xl"
-                  src={`https://robohash.org/${currentUser.id}?size=32x32&set=set2`}
+                  src={`https://robohash.org/${currentUser.id}?size=40x40&set=set2`}
                   alt={`${currentUser.username}'s avatar`}
-                  width={32}
-                  height={32}
+                  width={40}
+                  height={40}
                 />
               </Link>
             </div>
