@@ -21,7 +21,7 @@ const UserProfilePage = () => {
   }, [userId]);
 
   return (
-    <div className="flex flex-col-reverse items-center">
+    <div className="flex flex-col items-center">
       <div className="w-[70%] flex items-center mt-2 mb-4">
         {user && (
           <>
@@ -36,7 +36,7 @@ const UserProfilePage = () => {
           </>
         )}
       </div>
-      <div className="w-1/2">
+      <div className="w-1/2 flex-col-reverse flex">
         {userPosts.length > 0 ? (
           userPosts.map((post) => (
             <div key={post.id}>
