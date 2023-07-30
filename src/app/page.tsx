@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { getPosts } from "../ServerFunctions";
 import { UserPost } from "@prisma/client";
-import UserPostComponent from "@/components/Post";
+import UserPostComponent from "@/components/UserPostComponent";
 export default function Home() {
   const [posts, setPosts] = useState<UserPost[]>([]);
   useEffect(() => {
