@@ -1,5 +1,4 @@
 "use client";
-import { redirect } from "next/navigation";
 import { createUser } from "./AuthorizationServerFunctions";
 import { findUserByUsername } from "../AddPostButton/ServerFunctions";
 import { UserContext } from "@/contexts/UserContextProvider";

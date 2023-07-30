@@ -1,5 +1,4 @@
 "use client";
-import { redirect } from "next/navigation";
 import { findUserByUsername } from "../AddPostButton/ServerFunctions";
 import { useContext } from "react";
 import { UserContext } from "@/contexts/UserContextProvider";
