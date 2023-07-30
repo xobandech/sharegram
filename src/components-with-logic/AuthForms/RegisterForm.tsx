@@ -17,7 +17,7 @@ const RegisterForm = () => {
         setCurrentUser(user);
       });
       console.log("Successfull registration");
-      redirect("/");
+      window.location.replace("/");
     }
   };
   return (
