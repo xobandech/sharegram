@@ -21,7 +21,7 @@ const NavigationBar = () => {
             <div className="flex items-center pl-4">
               <Link href={`/${currentUser.id}`}>
                 <Image
-                  className="rounded-2xl"
+                  className="rounded-3xl outline outline-solid outline-black outline-1"
                   src={`https://robohash.org/${currentUser.id}?size=40x40&set=set2`}
                   alt={`${currentUser.username}'s avatar`}
                   width={40}
