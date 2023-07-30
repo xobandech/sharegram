@@ -2,26 +2,28 @@ import { UserPost } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 const UserPostComponent = (post: UserPost) => {
-    if (!post.postImageUrl)
+  if (!post.postImageUrl)
     return (
-      <div
-        key={post.id}
-        className="flex w-[468px] max-sm:w-[100%] flex-col border-b"
-      >
-        <Link
-          className="flex flex-row w-[100%] items-left m-2"
-          href={`/${post.userId}`}
-        >
-          <Image
-            className="rounded-2xl"
-            src={`https://robohash.org/${post.userId}?size=40x40&set=set2`}
-            alt={`${post.authorUsername}'s avatar`}
-            width={40}
-            height={40}
-          />
-          <p className="p-2">{post.authorUsername}</p>
-        </Link>
-        <h3 className="max-sm:px-4">{post.postText}</h3>
+      <div key={post.id} className="flex w-[468px] max-sm:w-[100%] flex-col">
+        <div className=" border-b">
+          <Link
+            className="flex flex-row w-[100%] items-left m-2"
+            href={`/${post.userId}`}
+          >
+            <Image
+              className="rounded-2xl"
+              src={`https://robohash.org/${post.userId}?size=40x40&set=set2`}
+              alt={`${post.authorUsername}'s avatar`}
+              width={40}
+              height={40}
+            />
+            <p className="p-2">{post.authorUsername}</p>
+          </Link>
+          <h3 className="max-sm:px-4">{post.postText}</h3>
+        </div>
+        <div className="flex justify-end text-gray-500 mr-2">
+          <h3>{`${post.createdAt.toString().slice(3, 21)}`}</h3>
+        </div>
       </div>
     );
 
@@ -55,4 +57,4 @@ const UserPostComponent = (post: UserPost) => {
   );
 };
 
-export default UserPostComponent
+export default UserPostComponent;
