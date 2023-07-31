@@ -26,5 +26,8 @@ export async function findUsersBySearchQuery(searchQuery: string) {
 
 export async function getUsers() {
   "use server";
-  return prisma.user.findMany();
+  return prisma.user.findMany({ select: {
+    id: true,
+    username: true,
+  }});
 }
