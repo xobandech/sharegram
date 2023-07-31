@@ -53,6 +53,9 @@ const UserPostComponent = (post: UserPost) => {
         />
       </div>
       <h3 className="text-xl">{post.postText}</h3>
+      <div className="flex justify-end text-gray-500 mr-2">
+          <h3>{`${post.createdAt.toString().slice(3, 21)}`}</h3>
+        </div>
     </div>
   );
 };
