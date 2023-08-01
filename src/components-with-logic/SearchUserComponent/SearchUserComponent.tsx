@@ -35,7 +35,7 @@ const SearchUserComponent = () => {
         type="text"
         onChange={onSearchChange}
         onBlur={() => {
-          if (!element.parentNode.matches(":hover")) {
+          if (!element?.parentElement?.matches(":hover")) {
             setIsVisible(false)
           }
           else {
