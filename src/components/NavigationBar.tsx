@@ -5,6 +5,7 @@ import Logo from "../images/logo.png";
 import { UserContext } from "@/contexts/UserContextProvider";
 import AddPostButton from "../components-with-logic/AddPostButton/AddPostButton";
 import { useContext } from "react";
+import SearchUserComponent from "@/components-with-logic/SearchUserComponent/SearchUserComponent";
 const NavigationBar = () => {
   const { currentUser } = useContext(UserContext);
   return (
@@ -13,6 +14,9 @@ const NavigationBar = () => {
         <Link className="flex pl-4 flex-row justify-center" href="/">
           <Image src={Logo} width={150} height={200} alt="dasds" />
         </Link>
+      </div>
+      <div>
+        <SearchUserComponent />
       </div>
       <div className="text-black pr-5">
         {currentUser ? (
