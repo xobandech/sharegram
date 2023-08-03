@@ -48,10 +48,10 @@ const UserProfilePage = () => {
         {userPosts.length > 0 ? (
           userPosts.map((post) => (
             <div key={post.id}>
-              {post.postImageUrl && (
+              {post.base64PostImage && (
                 <img
-                  src={post.postImageUrl}
-                  alt={post.postImageUrl}
+                  src={post.base64PostImage}
+                  alt={post.base64PostImage}
                   className="object-contain w-full h-full max-sm:w-[100%] max max-w-[468px] max-h-[585px]"
                 />
               )}

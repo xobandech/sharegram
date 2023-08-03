@@ -2,7 +2,7 @@ import { UserPost } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 const UserPostComponent = (post: UserPost) => {
-  if (!post.postImageUrl)
+  if (!post.base64PostImage)
     return (
       <div key={post.id} className="flex w-[468px] max-sm:w-[100%] flex-col">
         <div className=" border-b">
@@ -47,8 +47,8 @@ const UserPostComponent = (post: UserPost) => {
       </Link>
       <div className="max-w-[468px] max-sm:max-w-[100%] bg-gray-50 overflow-hidden">
         <img
-          src={post.postImageUrl}
-          alt={post.postImageUrl}
+          src={post.base64PostImage}
+          alt={post.base64PostImage}
           className="object-contain w-full h-full max-sm:w-[100%] max max-w-[468px] max-h-[585px]"
         />
       </div>

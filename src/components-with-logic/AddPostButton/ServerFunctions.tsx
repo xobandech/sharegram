@@ -9,7 +9,7 @@ export type UserData = {
 };
 
 type PostData = {
-  postImageUrl: string;
+  base64PostImage: string;
   postText: string;
   user: User;
 };
@@ -50,7 +50,7 @@ export async function findUserByUsername(username: string) {
 }
 
 export async function createPost(
-  postImageUrl: string,
+  base64PostImage: string,
   postText: string,
   user: User
 ) {
@@ -59,7 +59,7 @@ export async function createPost(
     if (user) {
        await prisma.userPost.create({
         data: {
-          postImageUrl,
+          base64PostImage,
           postText,
           user: {
             connect: { id: user.id },
