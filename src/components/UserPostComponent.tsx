@@ -46,13 +46,13 @@ const UserPostComponent = (post: UserPost) => {
         <p className="p-2">{post.authorUsername}</p>
       </Link>
       <div className="max-w-[468px] max-sm:max-w-[100%] bg-gray-50 overflow-hidden">
+        <h3 className="text-xl">{post.postText}</h3>
         <img
           src={post.base64PostImage}
           alt={post.base64PostImage}
           className="object-contain w-full h-full max-sm:w-[100%] max max-w-[468px] max-h-[585px]"
         />
       </div>
-      <h3 className="text-xl">{post.postText}</h3>
       <div className="flex justify-end text-gray-500 mr-2">
           <h3>{`${post.createdAt.toString().slice(3, 21)}`}</h3>
         </div>
