@@ -15,7 +15,7 @@ const NavigationBar = () => {
           <Image src={Logo} width={150} height={200} alt="dasds" />
         </Link>
       </div>
-      <div>
+      <div className="flex flex-col justify-center">
         <SearchUserComponent />
       </div>
       <div className="text-black pr-5">
