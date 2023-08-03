@@ -34,7 +34,7 @@ const UserProfilePage = () => {
                 width={65}
                 height={65}
               />
-              <h2>{user.username}</h2>
+              <h2 className="font-bold">{user.username}</h2>
             </>
           )}
         </div>
