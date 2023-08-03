@@ -38,7 +38,7 @@ const UserProfilePage = () => {
             </>
           )}
         </div>
-        {user?.id === currentUser?.id && (
+        {currentUser && user?.id === currentUser?.id && (
           <div className="flex justify-end ">
             <LogoutButton />
           </div>
