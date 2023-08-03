@@ -16,9 +16,13 @@ const SearchUserComponent = ({ top }: {top: number}) => {
   const [availableUsers, setAvailableUsers] = useState<User[]>([]);
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
   const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
-    getUsers().then((users) => setAvailableUsers(users));
+    try{
+        getUsers().then((users) => setAvailableUsers(users));
+    } catch (e) {
+        console.log(e);
+        
+    }
   }, []);
 
   useEffect(() => {
