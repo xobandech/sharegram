@@ -1,4 +1,5 @@
 "use client"
+import { findUserByUsername } from "@/components-with-logic/AddPostButton/ServerFunctions";
 import React, { createContext, useEffect, useState } from "react";
 
 export type User = {
@@ -33,7 +34,9 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     const userString = localStorage.getItem('currentUserSharegramSh');
     if (userString) {
       const user = JSON.parse(userString) as User;
-      setCurrentUser(user);
+      findUserByUsername(user?.username as string).then((user) => {
+        if(user.username !== undefined && user.username !== null) setCurrentUser(user);
+      })
     }
   }, []);
   
