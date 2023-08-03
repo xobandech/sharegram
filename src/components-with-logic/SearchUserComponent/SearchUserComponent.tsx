@@ -3,9 +3,11 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { getUsers } from "../AuthForms/AuthorizationServerFunctions";
 import Link from "next/link";
 import Image from "next/image";
+import SearchIcon from "../../images/searchIcon.svg";
 const inputStyling = {
   borderRadius: "0.375rem",
   border: "solid 1px #333",
+  background: `url(${SearchIcon.src}) no-repeat`,
   backgroundPosition: "right 3px center",
   backgroundSize: "1rem",
 };
