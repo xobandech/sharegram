@@ -3,7 +3,10 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { getUsers } from "../AuthForms/AuthorizationServerFunctions";
 import Link from "next/link";
 import Image from "next/image";
+import SearchIcon from "../../images/searchIcon.svg";
+const inputStyling = {
 
+};
 const SearchUserComponent = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [availableUsers, setAvailableUsers] = useState<User[]>([]);
@@ -31,35 +34,39 @@ const SearchUserComponent = () => {
 
   return (
     <div className="flex justify-center flex-col">
-      <input
-        type="text"
-        onChange={onSearchChange}
-        onBlur={() => {
-          if (!element?.parentElement?.matches(":hover")) {
-            setIsVisible(false)
-          }
-          else {
-            setIsVisible(true)
-          }
-        }}
-        onFocus={() => setIsVisible(true)}
-      />
+      <div>
+        <input
+          style={inputStyling}
+          type="text"
+          onChange={onSearchChange}
+          onBlur={() => {
+            if (!element?.parentElement?.matches(":hover")) {
+              setIsVisible(false);
+            } else {
+              setIsVisible(true);
+            }
+          }}
+          onFocus={() => setIsVisible(true)}
+        />
+      </div>
       <div
-        style={{ backgroundColor: "#f4f4f4" }}
-        className="bg-[#333]"
+        style={{ backgroundColor: "#f6f6f6", position: "absolute", top: 39, minWidth:"220px" }}
         id="listcontainer"
       >
         {isVisible &&
           filteredUsers.map((user) => {
             return (
-              <div key={user?.id}>
+              <div key={user?.id} style={{
+                boxSizing: "border-box",
+                borderBottom: "1px solid #333",
+              }}>
                 <Link
-                  className="flex flex-row w-[100%] items-left m-2"
+                  className="flex  flex-row m-2"
                   href={`/${user?.id}`}
                   onClick={() => setIsVisible(false)}
                 >
                   <Image
-                    className="rounded-2xl"
+                    className="rounded-full"
                     src={`https://robohash.org/${user?.id}?size=40x40&set=set2`}
                     alt={`${user?.username}'s avatar`}
                     width={40}
@@ -71,7 +78,6 @@ const SearchUserComponent = () => {
             );
           })}
       </div>
-      <label htmlFor="dasd"></label>
     </div>
   );
 };
