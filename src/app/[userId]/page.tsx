@@ -48,6 +48,7 @@ const UserProfilePage = () => {
         {userPosts.length > 0 ? (
           userPosts.map((post) => (
             <div key={post.id}>
+              <p className="border-b">{post.postText}</p>
               {post.base64PostImage && (
                 <img
                   src={post.base64PostImage}
@@ -55,7 +56,6 @@ const UserProfilePage = () => {
                   className="object-contain w-full h-full max-sm:w-[100%] max max-w-[468px] max-h-[585px]"
                 />
               )}
-              <p className="border-b">{post.postText}</p>
               <div className="flex justify-end text-gray-500">
                 <h3>{`${post.createdAt.toString().slice(3, 21)}`}</h3>
               </div>
