@@ -30,7 +30,7 @@ const UserPostComponent = (post: UserPost) => {
   return (
     <div
       key={post.id}
-      className="flex w-[468px] max-sm:w-[100%] flex-col border-b"
+      className="flex w-[468px] max-sm:w-[100%] flex-col"
     >
       <Link
         className="flex flex-row w-[100%] items-left m-2"
@@ -45,8 +45,8 @@ const UserPostComponent = (post: UserPost) => {
         />
         <p className="p-2">{post.authorUsername}</p>
       </Link>
-      <div className="max-w-[468px] max-sm:max-w-[100%] bg-gray-50 overflow-hidden">
-        <h3 className="text-xl">{post.postText}</h3>
+      <div className="max-w-[468px] max-sm:max-w-[100%] border-b bg-gray-50 overflow-hidden">
+        <h3 className="bg-white">{post.postText}</h3>
         <img
           src={post.base64PostImage}
           alt={post.base64PostImage}
