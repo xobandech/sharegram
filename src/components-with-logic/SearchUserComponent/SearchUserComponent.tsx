@@ -21,7 +21,6 @@ const SearchUserComponent = ({ top }: {top: number}) => {
         getUsers().then((users) => setAvailableUsers(users));
     } catch (e) {
         console.log(e);
-        
     }
   }, []);
 
@@ -62,7 +61,7 @@ const SearchUserComponent = ({ top }: {top: number}) => {
         id="listcontainer"
       >
         {isVisible &&
-          filteredUsers.map((user) => {
+          filteredUsers.slice(0,10).map((user) => {
             return (
               <div key={user?.id} style={{
                 boxSizing: "border-box",
