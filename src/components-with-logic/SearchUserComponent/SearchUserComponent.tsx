@@ -11,7 +11,7 @@ const inputStyling = {
   backgroundPosition: "right 3px center",
   backgroundSize: "1rem",
 };
-const SearchUserComponent = () => {
+const SearchUserComponent = ({ top }: {top: number}) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [availableUsers, setAvailableUsers] = useState<User[]>([]);
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
@@ -54,7 +54,7 @@ const SearchUserComponent = () => {
         />
       </div>
       <div
-        style={{ backgroundColor: "#f6f6f6", position: "absolute", top: 39, minWidth:"220px" }}
+        style={{ backgroundColor: "#f6f6f6", position: "absolute", top: top, minWidth:"220px" }}
         id="listcontainer"
       >
         {isVisible &&
