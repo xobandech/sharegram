@@ -13,7 +13,7 @@ import LogoutButton from "@/components-with-logic/LogoutButton/LogoutButton";
 const UserProfilePage = () => {
   const [user, setUser] = useState<User>();
   const [userPosts, setUserPosts] = useState<UserPost[]>([]);
-  const { currentUser } = useContext(UserContext)
+  const { currentUser } = useContext(UserContext);
   const userId = +useParams().userId;
 
   useEffect(() => {
@@ -25,21 +25,20 @@ const UserProfilePage = () => {
     <div className="flex flex-col items-center">
       <div className="w-[70%] flex items-center mt-2 mb-4 justify-between">
         <div className="flex items-center">
-
-        {user && (
-          <>
-          <Image
-                    className="rounded-full mr-2 outline outline-solid outline-black outline-1"
-                    src={`https://robohash.org/${user.id}?size=65x65&set=set2`}
-                    alt={`${user.username}'s avatar`}
-                    width={65}
-                    height={65}
-                    />
-            <h2>{user.username}</h2>
-          </>
-        )}
-            </div>
-        { user?.id === currentUser?.id && (
+          {user && (
+            <>
+              <Image
+                className="rounded-full mr-2 outline outline-solid outline-black outline-1"
+                src={`https://robohash.org/${user.id}?size=65x65&set=set2`}
+                alt={`${user.username}'s avatar`}
+                width={65}
+                height={65}
+              />
+              <h2>{user.username}</h2>
+            </>
+          )}
+        </div>
+        {user?.id === currentUser?.id && (
           <div className="flex justify-end ">
             <LogoutButton />
           </div>
@@ -49,7 +48,13 @@ const UserProfilePage = () => {
         {userPosts.length > 0 ? (
           userPosts.map((post) => (
             <div key={post.id}>
-              <p></p>
+              {post.postImageUrl && (
+                <img
+                  src={post.postImageUrl}
+                  alt={post.postImageUrl}
+                  className="object-contain w-full h-full max-sm:w-[100%] max max-w-[468px] max-h-[585px]"
+                />
+              )}
               <p className="border-b">{post.postText}</p>
               <div className="flex justify-end text-gray-500">
                 <h3>{`${post.createdAt.toString().slice(3, 21)}`}</h3>
