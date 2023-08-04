@@ -11,7 +11,7 @@ const inputStyling = {
   backgroundPosition: "right 3px center",
   backgroundSize: "1rem",
 };
-const SearchUserComponent = ({ top }: {top: number}) => {
+const SearchUserComponent = ({ top }: { top: number }) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [availableUsers, setAvailableUsers] = useState<User[]>([]);
   const [isVisible, setIsVisible] = useState(false);
@@ -23,10 +23,10 @@ const SearchUserComponent = ({ top }: {top: number}) => {
     });
   }, [searchQuery, availableUsers]);
   useEffect(() => {
-    try{
-        getUsers().then((users) => setAvailableUsers(users));
+    try {
+      getUsers().then((users) => setAvailableUsers(users));
     } catch (e) {
-        console.log(e);
+      console.log(e);
     }
   }, []);
 
@@ -38,7 +38,7 @@ const SearchUserComponent = ({ top }: {top: number}) => {
 
   return (
     <div className="flex justify-center flex-col">
-      <div>
+      <div className="block max-sm:hidden">
         <input
           style={inputStyling}
           type="text"
@@ -53,19 +53,35 @@ const SearchUserComponent = ({ top }: {top: number}) => {
           onFocus={() => setIsVisible(true)}
         />
       </div>
+      <div className="max-sm:block hidden">
+        <input
+          style={inputStyling}
+          type="text"
+          onChange={onSearchChange}
+          onFocus={() => setIsVisible(true)}
+        />
+      </div>
       <div
-        style={{ backgroundColor: "#f6f6f6", position: "absolute", top: top, minWidth:"220px" }}
+        style={{
+          backgroundColor: "#f6f6f6",
+          position: "absolute",
+          top: top,
+          minWidth: "220px",
+        }}
         id="listcontainer"
       >
         {isVisible &&
-          filteredUsers.slice(0,10).map((user) => {
+          filteredUsers.slice(0, 10).map((user) => {
             return (
-              <div key={user?.id} style={{
-                boxSizing: "border-box",
-                borderBottom: "1px solid #333",
-              }}>
+              <div
+                key={user?.id}
+                style={{
+                  boxSizing: "border-box",
+                  borderBottom: "1px solid #333",
+                }}
+              >
                 <Link
-                  className="flex  flex-row m-2"
+                  className="flex flex-row m-2"
                   href={`/${user?.id}`}
                   onClick={() => setIsVisible(false)}
                 >
