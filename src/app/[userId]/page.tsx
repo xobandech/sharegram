@@ -28,7 +28,7 @@ const UserProfilePage = () => {
           {user && (
             <>
               <Image
-                className="rounded-full mr-2 outline outline-solid outline-black outline-1"
+                className="rounded-full mr-2 outline outline-solid outline-black outline-1 max-md:rounded-none"
                 src={`https://robohash.org/${user.id}?size=65x65&set=set2`}
                 alt={`${user.username}'s avatar`}
                 width={65}
