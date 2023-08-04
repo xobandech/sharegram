@@ -4,7 +4,7 @@ import Link from "next/link";
 const UserPostComponent = (post: UserPost) => {
   if (!post.base64PostImage)
     return (
-      <div key={post.id} className="flex w-[468px] max-sm:w-[100%] flex-col">
+      <div key={post.id} className="flex w-[468px] max-md:w-[100%] flex-col">
         <div className=" border-b">
           <Link
             className="flex flex-row w-[100%] items-left m-2"
@@ -19,7 +19,7 @@ const UserPostComponent = (post: UserPost) => {
             />
             <p className="p-2">{post.authorUsername}</p>
           </Link>
-          <h3 className="max-sm:px-4">{post.postText}</h3>
+          <h3 className="max-md:px-4">{post.postText}</h3>
         </div>
         <div className="flex justify-end text-gray-500 mr-2">
           <h3>{`${post.createdAt.toString().slice(3, 21)}`}</h3>
@@ -30,7 +30,7 @@ const UserPostComponent = (post: UserPost) => {
   return (
     <div
       key={post.id}
-      className="flex w-[468px] max-sm:w-[100%] flex-col"
+      className="flex w-[468px] max-md:w-[100%] flex-col"
     >
       <Link
         className="flex flex-row w-[100%] items-left m-2"
@@ -45,12 +45,12 @@ const UserPostComponent = (post: UserPost) => {
         />
         <p className="p-2">{post.authorUsername}</p>
       </Link>
-      <div className="max-w-[468px] max-sm:max-w-[100%] border-b bg-gray-50 overflow-hidden">
+      <div className="max-w-[468px] max-md:max-w-[100%] border-b bg-gray-50 overflow-hidden">
         <h3 className="bg-white">{post.postText}</h3>
         <img
           src={post.base64PostImage}
           alt={post.base64PostImage}
-          className="object-contain w-full h-full max-sm:w-[100%] max max-w-[468px] max-h-[585px]"
+          className="object-contain w-full h-full max-md:w-[100%] max max-w-[468px] max-h-[585px]"
         />
       </div>
       <div className="flex justify-end text-gray-500 mr-2">

@@ -12,7 +12,7 @@ const LogoutButton = () => {
           localStorage.setItem("currentUserSharegramSh", "");
         }}
       >
-        <p className="mr-2 max-sm:hidden">Log Out</p>
+        <p className="mr-2 max-md:hidden">Log Out</p>
         <Image width={30} height={30} src={LogoutImg} alt="Logout"></Image>
       </button>
   );

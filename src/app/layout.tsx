@@ -19,7 +19,7 @@ export default function RootLayout({
         <body className={`${inter.className}`}>
           <NavigationBar />
           <div className="flex min-h-[100vh]  justify-center bg-[#f4f4f4]">
-            <div className="sm:w-[1000px] max-sm:w-[100vw] bg-white">{children}</div>
+            <div className="md:w-[1000px] max-md:w-[100vw] bg-white">{children}</div>
           </div>
         </body>
       </html>

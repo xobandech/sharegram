@@ -53,7 +53,7 @@ const UserProfilePage = () => {
                 <img
                   src={post.base64PostImage}
                   alt={post.base64PostImage}
-                  className="object-contain w-full h-full max-sm:w-[100%] max max-w-[468px] max-h-[585px]"
+                  className="object-contain w-full h-full max-md:w-[100%] max max-w-[468px] max-h-[585px]"
                 />
               )}
               <div className="flex justify-end text-gray-500">

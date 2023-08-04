@@ -38,7 +38,7 @@ const SearchUserComponent = ({ top }: { top: number }) => {
 
   return (
     <div className="flex justify-center flex-col">
-      <div className="block max-sm:hidden">
+      <div className="block max-md:hidden">
         <input
           style={inputStyling}
           type="text"
@@ -53,7 +53,7 @@ const SearchUserComponent = ({ top }: { top: number }) => {
           onFocus={() => setIsVisible(true)}
         />
       </div>
-      <div className="max-sm:block hidden">
+      <div className="max-md:block hidden">
         <input
           style={inputStyling}
           type="text"
