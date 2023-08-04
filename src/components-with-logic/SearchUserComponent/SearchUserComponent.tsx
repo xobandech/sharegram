@@ -1,5 +1,5 @@
 import { User } from "../../contexts/UserContextProvider";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState, useMemo } from "react";
 import { getUsers } from "../AuthForms/AuthorizationServerFunctions";
 import Link from "next/link";
 import Image from "next/image";
@@ -14,8 +14,14 @@ const inputStyling = {
 const SearchUserComponent = ({ top }: {top: number}) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [availableUsers, setAvailableUsers] = useState<User[]>([]);
-  const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
   const [isVisible, setIsVisible] = useState(false);
+  const filteredUsers = useMemo(() => {
+    return availableUsers.filter((user) => {
+      return user?.username
+        .toLocaleLowerCase()
+        .includes(searchQuery.toLocaleLowerCase());
+    });
+  }, [searchQuery, availableUsers]);
   useEffect(() => {
     try{
         getUsers().then((users) => setAvailableUsers(users));
@@ -23,15 +29,6 @@ const SearchUserComponent = ({ top }: {top: number}) => {
         console.log(e);
     }
   }, []);
-
-  useEffect(() => {
-    const filteredUsers = availableUsers.filter((user) => {
-      return user?.username
-        .toLocaleLowerCase()
-        .includes(searchQuery.toLocaleLowerCase());
-    });
-    setFilteredUsers(filteredUsers);
-  }, [searchQuery, availableUsers]);
 
   const onSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     const searchFieldString = event.target.value.toLocaleLowerCase();
