@@ -24,7 +24,10 @@ const UserProfilePage = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="w-[70%] flex items-center mt-2 mb-4 justify-between">
-        <div className="flex items-center">
+        <div className="flex items-center outline-solid outline-black outline-1"                 style={{
+                  borderRadius: "9999px",
+                  WebkitBorderRadius: "9999px"
+                }}>
           {user && (
             <>
               <Image
