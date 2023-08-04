@@ -50,11 +50,13 @@ const UserProfilePage = () => {
             <div key={post.id}>
               <p className="border-b">{post.postText}</p>
               {post.base64PostImage && (
-                <img
-                  src={post.base64PostImage}
-                  alt={post.base64PostImage}
-                  className="object-contain w-full h-full max-md:w-[100%] max max-w-[468px] max-h-[585px]"
-                />
+                <div className="flex justify-center">
+                  <img
+                    src={post.base64PostImage}
+                    alt={post.base64PostImage}
+                    className="object-contain w-full h-full max-md:w-[100%] max max-w-[468px] max-h-[585px]"
+                  />
+                </div>
               )}
               <div className="flex justify-end text-gray-500">
                 <h3>{`${post.createdAt.toString().slice(3, 21)}`}</h3>

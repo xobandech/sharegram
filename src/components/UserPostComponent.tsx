@@ -5,7 +5,7 @@ const UserPostComponent = (post: UserPost) => {
   if (!post.base64PostImage)
     return (
       <div key={post.id} className="flex w-[468px] max-md:w-[100%] flex-col">
-        <div className=" border-b">
+        <div className="border-b">
           <Link
             className="flex flex-row w-[100%] items-left m-2"
             href={`/${post.userId}`}
@@ -28,10 +28,7 @@ const UserPostComponent = (post: UserPost) => {
     );
 
   return (
-    <div
-      key={post.id}
-      className="flex w-[468px] max-md:w-[100%] flex-col"
-    >
+    <div key={post.id} className="flex w-[468px] max-md:w-[100%] flex-col">
       <Link
         className="flex flex-row w-[100%] items-left m-2"
         href={`/${post.userId}`}
@@ -47,15 +44,17 @@ const UserPostComponent = (post: UserPost) => {
       </Link>
       <div className="max-w-[468px] max-md:max-w-[100%] border-b bg-gray-50 overflow-hidden">
         <h3 className="bg-white">{post.postText}</h3>
-        <img
-          src={post.base64PostImage}
-          alt={post.base64PostImage}
-          className="object-contain w-full h-full max-md:w-[100%] max max-w-[468px] max-h-[585px]"
-        />
+        <div className="flex justify-center">
+          <img
+            src={post.base64PostImage}
+            alt={post.base64PostImage}
+            className="object-contain w-full h-full max-md:w-[100%] max max-w-[468px] max-h-[585px]"
+          />
+        </div>
       </div>
       <div className="flex justify-end text-gray-500 mr-2">
-          <h3>{`${post.createdAt.toString().slice(3, 21)}`}</h3>
-        </div>
+        <h3>{`${post.createdAt.toString().slice(3, 21)}`}</h3>
+      </div>
     </div>
   );
 };
