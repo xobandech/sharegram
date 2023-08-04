@@ -30,7 +30,8 @@ const UserProfilePage = () => {
               <Image
                 className="rounded-full mr-2 outline outline-solid outline-black outline-1"
                 style={{
-                  borderRadius: "9999px"
+                  borderRadius: "9999px",
+                  WebkitBorderRadius: "9999px"
                 }}
                 src={`https://robohash.org/${user.id}?size=65x65&set=set2`}
                 alt={`${user.username}'s avatar`}
