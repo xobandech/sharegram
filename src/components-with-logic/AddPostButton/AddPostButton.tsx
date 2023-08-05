@@ -2,6 +2,7 @@
 import { FormEvent, useContext, useState, useRef, ChangeEvent } from "react";
 import { createPost } from "./ServerFunctions";
 import { UserContext } from "@/contexts/UserContextProvider";
+import { UpdaterContext } from "@/contexts/UpdaterContextProvider";
 const buttonStyle = {
   color: "white",
   backgroundColor: "#1F2937",
@@ -20,6 +21,7 @@ const AddPostButton = () => {
   const [formData, setFormData] = useState({
     postText: "",
   });
+  const { setUpdaterValue } = useContext(UpdaterContext)
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target?.files?.[0]
@@ -44,6 +46,7 @@ const AddPostButton = () => {
       postText: "",
     });
     dialogRef.current?.close();
+    setUpdaterValue(true)
   };
 
   const openPopup = () => {
